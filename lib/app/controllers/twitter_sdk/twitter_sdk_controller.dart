@@ -28,7 +28,7 @@ class TwitterSdkController extends GetxController {
     );
   }
 
-  checkUserLoggedIn() async {
+  Future<void> checkUserLoggedIn() async {
     isLoading = true;
     update();
 
@@ -102,7 +102,7 @@ class TwitterSdkController extends GetxController {
     }
   }
 
-  reset({bool rebuild = true}) {
+  void reset({bool rebuild = true}) {
     isLoading = false;
     if (rebuild) update();
   }

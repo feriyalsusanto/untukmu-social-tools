@@ -27,7 +27,7 @@ class MainApp extends StatelessWidget {
         primarySwatch: Colors.orange,
         scaffoldBackgroundColor: Colors.white,
         cardColor: Colors.white,
-        cardTheme: CardTheme(color: Colors.white, elevation: 4),
+        cardTheme: CardThemeData(color: Colors.white, elevation: 4),
         appBarTheme: AppBarTheme(backgroundColor: Colors.white),
       ),
       getPages: AppPages.pages,
