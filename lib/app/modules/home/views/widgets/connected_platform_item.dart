@@ -67,23 +67,14 @@ class ConnectedPlatformItem extends StatelessWidget {
                   ),
               ],
             ),
-            connectedButton(
-              context,
-              isLoading: isLoading,
-              connectDate: connectDate,
-            ),
+            connectedButton(isLoading: isLoading, connectDate: connectDate),
           ],
         ),
       ),
     );
   }
 
-  Widget connectedButton(
-    BuildContext context, {
-    bool isLoading = false,
-    String? connectDate,
-  }) {
-    final ThemeData theme = Theme.of(context);
+  Widget connectedButton({bool isLoading = false, String? connectDate}) {
     if (isConnected) {
       return Text(
         'Connected since: $connectDate',
@@ -97,7 +88,7 @@ class ConnectedPlatformItem extends StatelessWidget {
           style: TextButton.styleFrom(
             visualDensity: VisualDensity.compact,
             tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-            backgroundColor: theme.primaryColor,
+            backgroundColor: Color(0xFF1F2937),
             foregroundColor: Colors.white,
             padding: EdgeInsets.symmetric(vertical: 16),
             shape: RoundedRectangleBorder(

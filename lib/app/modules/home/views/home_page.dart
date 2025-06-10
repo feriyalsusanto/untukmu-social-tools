@@ -12,6 +12,7 @@ import 'package:untukmu_social_tools/app/utils/date_util.dart';
 
 part 'widgets/connected_platform_item.dart';
 part 'widgets/connected_wallet_item.dart';
+part 'widgets/custom_end_drawer.dart';
 part 'widgets/digital_dna.dart';
 part 'widgets/impact_score_breakdown.dart';
 part 'widgets/impact_score_chart.dart';
@@ -27,6 +28,8 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey();
+
   final ApplinksController applinksController = Get.find<ApplinksController>();
 
   final List<SocialMediaButton> socialMediaButtons = [
@@ -72,7 +75,9 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _scaffoldKey,
       backgroundColor: Color(0xFFF5F5F5),
+      endDrawer: CustomEndDrawer(),
       body: SafeArea(
         child: SingleChildScrollView(
           padding: EdgeInsets.all(16),
@@ -80,9 +85,23 @@ class _HomePageState extends State<HomePage> {
             crossAxisAlignment: CrossAxisAlignment.start,
             spacing: 16,
             children: [
-              Text(
-                'Profle Passport',
-                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'Profile Passport',
+                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                  ),
+                  IconButton(
+                    onPressed: () {
+                      _scaffoldKey.currentState?.openEndDrawer();
+                    },
+                    icon: Icon(FontAwesomeIcons.trophy),
+                    iconSize: 18,
+                    splashRadius: 10,
+                    tooltip: 'XP & Badges',
+                  ),
+                ],
               ),
               Column(
                 children: [
