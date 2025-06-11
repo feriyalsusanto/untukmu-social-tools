@@ -1,4 +1,4 @@
-part of '../home_page.dart';
+part of '../home_passport_page.dart';
 
 class ConnectedWalletItem extends StatelessWidget {
   const ConnectedWalletItem({super.key});

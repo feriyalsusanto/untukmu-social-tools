@@ -1,4 +1,4 @@
-part of '../home_page.dart';
+part of '../home_passport_page.dart';
 
 class CustomEndDrawer extends StatelessWidget {
   const CustomEndDrawer({super.key});
@@ -193,9 +193,7 @@ class CustomEndDrawer extends StatelessWidget {
                           padding: EdgeInsets.all(8),
                           decoration: BoxDecoration(
                             color: Colors.white,
-                            border: Border.all(
-                              color: Color(0xFFE5E7EB),
-                            ),
+                            border: Border.all(color: Color(0xFFE5E7EB)),
                             borderRadius: BorderRadius.circular(12),
                           ),
                           child: Column(

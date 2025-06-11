@@ -1,4 +1,4 @@
-part of '../home_page.dart';
+part of '../home_passport_page.dart';
 
 class ImpactScoreBreakdown extends StatelessWidget {
   const ImpactScoreBreakdown({super.key, required this.impactScoreBreakdown});

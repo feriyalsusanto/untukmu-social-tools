@@ -1,4 +1,4 @@
-part of '../home_page.dart';
+part of '../home_passport_page.dart';
 
 class SocialMediaList extends StatelessWidget {
   const SocialMediaList({super.key, required this.socialMediaButtons});

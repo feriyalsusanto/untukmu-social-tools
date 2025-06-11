@@ -1,4 +1,4 @@
-part of '../home_page.dart';
+part of '../home_passport_page.dart';
 
 class SocialMediaButton extends StatelessWidget {
   const SocialMediaButton({

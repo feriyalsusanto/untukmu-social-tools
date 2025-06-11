@@ -18,9 +18,9 @@ class _LandingPageState extends State<LandingPage> {
     return Scaffold(
       appBar: AppBar(
         actions: [
-          TextButton(onPressed: () {}, child: Text('Community')),
-          TextButton(onPressed: () {}, child: Text('RWAI Agent')),
-          TextButton(onPressed: () {}, child: Text('Marketplace')),
+          TextButton(onPressed: () {}, child: Text('Client/Partner User base')),
+          TextButton(onPressed: () {}, child: Text('ForU User base')),
+          TextButton(onPressed: () {}, child: Text('Influencer')),
         ],
       ),
       body: Padding(

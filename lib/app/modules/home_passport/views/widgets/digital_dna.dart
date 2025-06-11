@@ -1,4 +1,4 @@
-part of '../home_page.dart';
+part of '../home_passport_page.dart';
 
 class DigitalDNA extends StatelessWidget {
   const DigitalDNA({super.key});
@@ -262,7 +262,7 @@ class DigitalDNA extends StatelessWidget {
               margin: EdgeInsets.only(top: 12),
               padding: EdgeInsets.all(16),
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(4),
+                borderRadius: BorderRadius.circular(12),
                 border: Border.all(color: Color(0xFFE5E7EB)),
               ),
               child: Column(
