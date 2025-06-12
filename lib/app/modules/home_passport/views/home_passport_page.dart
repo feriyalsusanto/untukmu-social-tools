@@ -29,8 +29,6 @@ class HomePassportPage extends StatefulWidget {
 }
 
 class _HomePassportPageState extends State<HomePassportPage> {
-  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey();
-
   final ApplinksController applinksController = Get.find<ApplinksController>();
 
   final List<SocialMediaButton> socialMediaButtons = [
@@ -75,99 +73,53 @@ class _HomePassportPageState extends State<HomePassportPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      key: _scaffoldKey,
-      backgroundColor: Color(0xFFF5F5F5),
-      endDrawer: CustomEndDrawer(),
-      body: SafeArea(
-        child: SingleChildScrollView(
-          padding: EdgeInsets.all(16),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            spacing: 16,
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    'Profile Passport',
-                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-                  ),
-                  IconButton(
-                    onPressed: () {
-                      _scaffoldKey.currentState?.openEndDrawer();
-                    },
-                    icon: Icon(FontAwesomeIcons.trophy),
-                    iconSize: 18,
-                    splashRadius: 10,
-                    tooltip: 'XP & Badges',
-                  ),
-                ],
-              ),
-              Column(
-                children: [
-                  Card(
-                    elevation: 0,
-                    borderOnForeground: true,
-                    color: Colors.white,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12),
-                      side: BorderSide(color: Color(0xFFE5E7EB)),
-                    ),
-                    child: Padding(
-                      padding: EdgeInsets.all(16.0),
-                      child: ProfileInfo(),
-                    ),
-                  ),
-                  ImpactScoreChart(),
-                ],
-              ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                spacing: 16,
-                children: [
-                  Text(
-                    'Connected Platforms',
-                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                  ),
-                  GetBuilder<TwitterSdkController>(
-                    init: Get.find<TwitterSdkController>()..checkUserLoggedIn(),
-                    builder: (controller) {
-                      bool isLoggedIn =
-                          controller.twitterToken != null ||
-                          controller.twitterUser != null;
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      spacing: 16,
+      children: [
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          spacing: 16,
+          children: [
+            Text(
+              'Connected Platforms',
+              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+            ),
+            GetBuilder<TwitterSdkController>(
+              init: Get.find<TwitterSdkController>(),
+              builder: (controller) {
+                bool isLoggedIn =
+                    controller.twitterToken != null ||
+                    controller.twitterUser != null;
 
-                      String connectDate = DateUtil.formatDate(
-                        controller.twitterConnectDate,
-                        format: 'MMM d, yyyy',
-                      );
+                String connectDate = DateUtil.formatDate(
+                  controller.twitterConnectDate,
+                  format: 'MMM d, yyyy',
+                );
 
-                      return ConnectedPlatformItem(
-                        onTap: () {
-                          controller.login();
-                        },
-                        platformIcon: FontAwesomeIcons.twitter,
-                        platformName: 'Twitter',
+                return ConnectedPlatformItem(
+                  onTap: () {
+                    controller.login();
+                  },
+                  platformIcon: FontAwesomeIcons.twitter,
+                  platformName: 'Twitter',
 
-                        /// TODO: change to actual data, hardcoded
-                        // platformUsername: controller.twitterUser?.screenName,
-                        platformUsername: '@creativecoder',
-                        isLoading: controller.isLoading,
-                        isConnected: isLoggedIn,
-                        connectDate: connectDate,
-                      );
-                    },
-                  ),
-                  ConnectedWalletItem(),
-                ],
-              ),
-              ImpactScoreBreakdown(impactScoreBreakdown: impactScoreBreakdown),
-              DigitalDNA(),
-              Web3WalletInfo(),
-            ],
-          ),
+                  /// TODO: change to actual data, hardcoded
+                  // platformUsername: controller.twitterUser?.screenName,
+                  platformUsername: '@creativecoder',
+                  isLoading: controller.isLoading,
+                  isConnected: isLoggedIn,
+                  connectDate: connectDate,
+                );
+              },
+            ),
+            ConnectedWalletItem(),
+          ],
         ),
-      ),
+        ImpactScoreBreakdown(impactScoreBreakdown: impactScoreBreakdown),
+        DigitalDNA(),
+        Web3WalletInfo(),
+      ],
     );
   }
 
