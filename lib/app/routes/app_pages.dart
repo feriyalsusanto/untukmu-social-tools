@@ -3,6 +3,7 @@ import 'package:untukmu_social_tools/app/modules/deeplink/deep_link_connect_page
 import 'package:untukmu_social_tools/app/modules/home/bindings/home_bindings.dart';
 import 'package:untukmu_social_tools/app/modules/home/views/home_page.dart';
 import 'package:untukmu_social_tools/app/modules/landing/views/landing_page.dart';
+import 'package:untukmu_social_tools/app/modules/signin/bindings/sign_in_bindings.dart';
 import 'package:untukmu_social_tools/app/modules/signin/views/sign_in_page.dart';
 
 class AppPages {
@@ -26,6 +27,10 @@ class AppPages {
         );
       },
     ),
-    GetPage(name: signIn, page: () => const SignInPage()),
+    GetPage(
+      name: signIn,
+      page: () => const SignInPage(),
+      binding: SignInBindings(),
+    ),
   ];
 }

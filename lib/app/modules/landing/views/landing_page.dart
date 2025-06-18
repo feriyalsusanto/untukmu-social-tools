@@ -40,7 +40,9 @@ class _LandingPageState extends State<LandingPage> {
               ),
             ),
             TextButton(
-              onPressed: () {},
+              onPressed: () {
+                Get.offAndToNamed(AppPages.signIn);
+              },
               style: TextButton.styleFrom(
                 backgroundColor: theme.primaryColor,
                 foregroundColor: Colors.white,
