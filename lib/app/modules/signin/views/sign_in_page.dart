@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:untukmu_social_tools/app/data/models/twitter/twitter_auth_result.dart';
 import 'package:untukmu_social_tools/app/modules/signin/controllers/sign_in_controller.dart';
 import 'package:untukmu_social_tools/app/modules/signin/views/widgets/widgets.dart';
 import 'package:untukmu_social_tools/gen/assets.gen.dart';
 
 class SignInPage extends StatefulWidget {
-  const SignInPage({super.key});
+  const SignInPage({super.key, this.twitterAuthResult});
+
+  final TwitterAuthResult? twitterAuthResult;
 
   @override
   State<SignInPage> createState() => _SignInPageState();
@@ -16,6 +19,7 @@ class _SignInPageState extends State<SignInPage> {
 
   @override
   void initState() {
+    signInController.initialization(twitterAuthResult: widget.twitterAuthResult);
     super.initState();
   }
 
@@ -67,7 +71,11 @@ class _SignInPageState extends State<SignInPage> {
       case 0:
         return PassportContent(
           onSocialMediaTap: (type) {
-            signInController.switchContent(1);
+            if (type == SocialType.x) {
+              signInController.loginByX();
+            } else if (type == SocialType.google) {
+              signInController.loginByGoogle();
+            }
           },
         );
       case 1:

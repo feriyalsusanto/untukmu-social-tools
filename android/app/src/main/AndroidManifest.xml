@@ -36,7 +36,7 @@
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
                 <data android:scheme="https"
-                    android:host="14a1-2a09-bac5-3a1b-18c8-00-278-b5.ngrok-free.app"
+                    android:host="9df4-2001-448a-50a0-797f-d1ec-4328-ce58-df2a.ngrok-free.app"
                     android:pathPrefix="/deeplink" />
             </intent-filter>
 

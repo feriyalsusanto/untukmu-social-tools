@@ -85,4 +85,12 @@ class AppStorageController extends GetxController {
       Get.snackbar('Error', 'Failed to save user data: $e');
     }
   }
+
+  Future<void> clearUserData() async {
+    try {
+      await _storage.deleteAll();
+    } catch (e) {
+      Get.snackbar('Error', 'Failed to clear user data: $e');
+    }
+  }
 }
