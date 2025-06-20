@@ -8,6 +8,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:untukmu_social_tools/app/controllers/applinks/applinks_controller.dart';
 import 'package:untukmu_social_tools/app/controllers/twitter_sdk/twitter_sdk_controller.dart';
+import 'package:untukmu_social_tools/app/modules/signin/views/widgets/social_media_button.dart';
 import 'package:untukmu_social_tools/app/utils/date_util.dart';
 
 part 'widgets/connected_platform_item.dart';
@@ -17,7 +18,6 @@ part 'widgets/digital_dna.dart';
 part 'widgets/impact_score_breakdown.dart';
 part 'widgets/impact_score_chart.dart';
 part 'widgets/profile_info.dart';
-part 'widgets/social_media_button.dart';
 part 'widgets/social_media_list.dart';
 part 'widgets/web3_wallet_info.dart';
 
@@ -32,7 +32,7 @@ class _HomePassportPageState extends State<HomePassportPage> {
   final ApplinksController applinksController = Get.find<ApplinksController>();
 
   final List<SocialMediaButton> socialMediaButtons = [
-    SocialMediaButton(icon: FontAwesomeIcons.twitter, isConnected: false),
+    // SocialMediaButton(icon: FontAwesomeIcons.twitter, isConnected: false),
   ];
 
   late final List<Map<String, dynamic>> impactScoreBreakdown;

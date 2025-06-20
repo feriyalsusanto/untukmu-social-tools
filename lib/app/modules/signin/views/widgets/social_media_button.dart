@@ -4,6 +4,8 @@ import 'package:untukmu_flutter_design_system/untukmu_flutter_design_system.dart
 
 enum IconPosition { left, right }
 
+enum ButtonRadius { normal, full }
+
 class SocialMediaButton extends StatelessWidget {
   const SocialMediaButton({
     super.key,
@@ -13,6 +15,7 @@ class SocialMediaButton extends StatelessWidget {
     required this.onPressed,
     this.darkMode = false,
     this.iconPosition = IconPosition.left,
+    this.buttonRadius = ButtonRadius.normal,
   });
 
   final String? assetName;
@@ -21,6 +24,7 @@ class SocialMediaButton extends StatelessWidget {
   final VoidCallback onPressed;
   final bool darkMode;
   final IconPosition iconPosition;
+  final ButtonRadius buttonRadius;
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +36,9 @@ class SocialMediaButton extends StatelessWidget {
         elevation: 0,
         padding: EdgeInsets.all(DLSSizing.s3xSmall),
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(DLSSizing.radius16),
+          borderRadius: buttonRadius == ButtonRadius.full
+              ? BorderRadius.circular(DLSSizing.radiusFull)
+              : BorderRadius.circular(DLSSizing.radius16),
           side:
               !darkMode
                   ? BorderSide(color: DLSColors.strokeSub300, width: 1)
