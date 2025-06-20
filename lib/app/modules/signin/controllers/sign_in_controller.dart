@@ -4,7 +4,7 @@ import 'package:loader_overlay/loader_overlay.dart';
 import 'package:untukmu_social_tools/app/controllers/client/client_dio_controller.dart';
 import 'package:untukmu_social_tools/app/controllers/storage/app_storage_controller.dart';
 import 'package:untukmu_social_tools/app/data/models/response/generic_response_model.dart';
-import 'package:untukmu_social_tools/app/data/models/twitter/twitter_auth_result.dart';
+import 'package:untukmu_social_tools/app/data/models/twitter/social_media_auth_result.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class SignInController extends GetxController {
@@ -16,8 +16,10 @@ class SignInController extends GetxController {
 
   int currentIndex = 0;
 
-  Future<void> initialization({TwitterAuthResult? twitterAuthResult}) async {
-    if (twitterAuthResult != null) {
+  Future<void> initialization({
+    SocialMediaAuthResult? socialMediaAuthResult,
+  }) async {
+    if (socialMediaAuthResult != null) {
       switchContent(1);
     }
   }
@@ -85,7 +87,7 @@ class SignInController extends GetxController {
       final response = await clientDioController.get(
         '/v1/user-auth/google',
         queryParameters: {
-          'redirect_uri':
+          'redirect_url':
               'https://9df4-2001-448a-50a0-797f-d1ec-4328-ce58-df2a.ngrok-free.app/deeplink',
         },
       );

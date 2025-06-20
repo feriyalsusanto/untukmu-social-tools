@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:untukmu_social_tools/app/data/models/twitter/twitter_auth_result.dart';
+import 'package:untukmu_social_tools/app/data/models/twitter/social_media_auth_result.dart';
 import 'package:untukmu_social_tools/app/modules/deeplink/deep_link_connect_page.dart';
 import 'package:untukmu_social_tools/app/modules/home/bindings/home_bindings.dart';
 import 'package:untukmu_social_tools/app/modules/home/views/home_page.dart';
@@ -32,9 +32,9 @@ class AppPages {
       name: signIn,
       page: () {
         Map<String, dynamic>? args = Get.arguments;
-        final TwitterAuthResult? twitterAuthResult =
-            args?['twitterAuth'] as TwitterAuthResult?;
-        return SignInPage(twitterAuthResult: twitterAuthResult);
+        final SocialMediaAuthResult? socialMediaAuthResult =
+            args?['twitterAuth'] as SocialMediaAuthResult?;
+        return SignInPage(socialMediaAuthResult: socialMediaAuthResult);
       },
       binding: SignInBindings(),
     ),

@@ -28,7 +28,8 @@ class ClientDioController extends GetxController {
         contentType: 'application/json',
         headers: {
           'Content-Type': 'application/json',
-          'Accept': 'application/json', // This is the one you want
+          'Accept': 'application/json',
+          'x-foru-apikey': dotenv.env['API_KEY_DEV']!,
         },
       ),
     );

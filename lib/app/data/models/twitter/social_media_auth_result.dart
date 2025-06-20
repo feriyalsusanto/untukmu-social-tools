@@ -1,23 +1,26 @@
-class TwitterAuthResult {
+class SocialMediaAuthResult {
   final String status;
   final int id;
-  final String twitterId;
+  final String? twitterId;
+  final String? googleId;
   final String accessToken;
   final int expiresAt;
 
-  TwitterAuthResult({
+  SocialMediaAuthResult({
     required this.status,
     required this.id,
-    required this.twitterId,
+    this.twitterId,
+    this.googleId,
     required this.accessToken,
     required this.expiresAt,
   });
 
-  factory TwitterAuthResult.fromParams(Map<String, String> params) {
-    return TwitterAuthResult(
+  factory SocialMediaAuthResult.fromParams(Map<String, String> params) {
+    return SocialMediaAuthResult(
       status: params['status'] ?? '',
       id: int.tryParse(params['id'] ?? '0') ?? 0,
       twitterId: params['twitterId'] ?? '',
+      googleId: params['googleId'] ?? '',
       accessToken: params['accessToken'] ?? '',
       expiresAt: int.tryParse(params['expiresAt'] ?? '0') ?? 0,
     );
@@ -32,6 +35,6 @@ class TwitterAuthResult {
 
   @override
   String toString() {
-    return 'TwitterAuthResult(status: $status, id: $id, twitterId: $twitterId, accessToken: ${accessToken.substring(0, 10)}..., expiresAt: $expiresAt)';
+    return 'SocialMediaAuthResult(status: $status, id: $id, twitterId: $twitterId, googleId: $googleId, accessToken: ${accessToken.substring(0, 10)}..., expiresAt: $expiresAt)';
   }
 }

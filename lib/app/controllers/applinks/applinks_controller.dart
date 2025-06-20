@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:app_links/app_links.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:untukmu_social_tools/app/data/models/twitter/twitter_auth_result.dart';
+import 'package:untukmu_social_tools/app/data/models/twitter/social_media_auth_result.dart';
 import 'package:untukmu_social_tools/app/routes/app_pages.dart';
 
 class ApplinksController extends GetxController {
@@ -85,8 +85,11 @@ class ApplinksController extends GetxController {
     debugPrint('Navigating to: $path with params: $queryParams');
 
     if (path == '/deeplink') {
-      if (queryParams.containsKey('twitterId')) {
-        TwitterAuthResult result = TwitterAuthResult.fromParams(queryParams);
+      if (queryParams.containsKey('twitterId') ||
+          queryParams.containsKey('googleId')) {
+        SocialMediaAuthResult result = SocialMediaAuthResult.fromParams(
+          queryParams,
+        );
         if (result.isSuccess) {
           Get.offAllNamed(AppPages.signIn, arguments: {'twitterAuth': result});
         }

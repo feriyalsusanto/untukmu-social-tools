@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:untukmu_social_tools/app/data/models/twitter/twitter_auth_result.dart';
+import 'package:untukmu_social_tools/app/data/models/twitter/social_media_auth_result.dart';
 import 'package:untukmu_social_tools/app/modules/signin/controllers/sign_in_controller.dart';
 import 'package:untukmu_social_tools/app/modules/signin/views/widgets/widgets.dart';
 import 'package:untukmu_social_tools/gen/assets.gen.dart';
 
 class SignInPage extends StatefulWidget {
-  const SignInPage({super.key, this.twitterAuthResult});
+  const SignInPage({super.key, this.socialMediaAuthResult});
 
-  final TwitterAuthResult? twitterAuthResult;
+  final SocialMediaAuthResult? socialMediaAuthResult;
 
   @override
   State<SignInPage> createState() => _SignInPageState();
@@ -19,7 +19,8 @@ class _SignInPageState extends State<SignInPage> {
 
   @override
   void initState() {
-    signInController.initialization(twitterAuthResult: widget.twitterAuthResult);
+    signInController.initialization(
+        socialMediaAuthResult: widget.socialMediaAuthResult);
     super.initState();
   }
 
