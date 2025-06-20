@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:untukmu_social_tools/app/controllers/storage/app_storage_controller.dart';
 import 'package:untukmu_social_tools/app/routes/app_pages.dart';
 
 class LandingPage extends StatefulWidget {
@@ -20,7 +21,13 @@ class _LandingPageState extends State<LandingPage> {
         actions: [
           TextButton(onPressed: () {}, child: Text('Client/Partner User base')),
           TextButton(onPressed: () {}, child: Text('ForU User base')),
-          TextButton(onPressed: () {}, child: Text('Influencer')),
+          TextButton(
+            onPressed: () async {
+              await AppStorageController.instance.clearUserData();
+              Get.offAndToNamed(AppPages.signIn);
+            },
+            child: Text('Influencer'),
+          ),
         ],
       ),
       body: Padding(

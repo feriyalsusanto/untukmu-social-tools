@@ -1,19 +1,32 @@
 class TwitterToken {
-  final String token;
-  final String tokenSecret;
+  final String twitterId;
+  final String accessToken;
+  final int expiresAt;
 
-  TwitterToken({required this.token, required this.tokenSecret});
+  TwitterToken({
+    required this.twitterId,
+    required this.accessToken,
+    required this.expiresAt,
+  });
 
   factory TwitterToken.fromJson(Map<String, dynamic> json) {
-    return TwitterToken(token: json['token'], tokenSecret: json['tokenSecret']);
+    return TwitterToken(
+      twitterId: json['twitterId'],
+      accessToken: json['accessToken'],
+      expiresAt: json['expiresAt'],
+    );
   }
 
   Map<String, dynamic> toJson() {
-    return {'token': token, 'tokenSecret': tokenSecret};
+    return {
+      'twitterId': twitterId,
+      'accessToken': accessToken,
+      'expiresAt': expiresAt,
+    };
   }
 
   @override
   String toString() {
-    return 'TwitterToken(token: $token, tokenSecret: $tokenSecret)';
+    return 'TwitterToken(twitterId: $twitterId, accessToken: $accessToken, expiresAt: $expiresAt)';
   }
 }

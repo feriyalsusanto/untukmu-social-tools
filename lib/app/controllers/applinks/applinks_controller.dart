@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:app_links/app_links.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:untukmu_social_tools/app/data/models/twitter/twitter_auth_result.dart';
 import 'package:untukmu_social_tools/app/routes/app_pages.dart';
 
 class ApplinksController extends GetxController {
@@ -34,14 +35,14 @@ class ApplinksController extends GetxController {
     _appLinks = AppLinks();
 
     // Check if app was launched from a link
-    try {
-      final initialLink = await _appLinks.getInitialLink();
-      if (initialLink != null) {
-        _handleIncomingLink(initialLink);
-      }
-    } catch (e) {
-      debugPrint('Failed to get initial link: $e');
-    }
+    // try {
+    //   final initialLink = await _appLinks.getInitialLink();
+    //   if (initialLink != null) {
+    //     _handleIncomingLink(initialLink);
+    //   }
+    // } catch (e) {
+    //   debugPrint('Failed to get initial link: $e');
+    // }
 
     // Listen for incoming links when app is already running
     _startListening();
@@ -77,28 +78,20 @@ class ApplinksController extends GetxController {
   }
 
   /// Navigate to appropriate screen based on link
-  void _navigateFromLink(Uri uri) {
+  Future<void> _navigateFromLink(Uri uri) async {
     final path = uri.path;
     final queryParams = uri.queryParameters;
 
     debugPrint('Navigating to: $path with params: $queryParams');
 
-    // try {
-    //   Get.offAllNamed(
-    //     AppPages.deepLinkConnect,
-    //     parameters: {
-    //       'oauth_token': queryParams['oauth_token'] ?? '',
-    //       'oauth_verifier': queryParams['oauth_verifier'] ?? '',
-    //     },
-    //   );
-    // } catch (e) {
-    //   debugPrint('Navigation error: $e');
-    //   Get.snackbar(
-    //     'Navigation Error',
-    //     'Failed to navigate: $e',
-    //     snackPosition: SnackPosition.BOTTOM,
-    //   );
-    // }
+    if (path == '/deeplink') {
+      if (queryParams.containsKey('twitterId')) {
+        TwitterAuthResult result = TwitterAuthResult.fromParams(queryParams);
+        if (result.isSuccess) {
+          Get.offAllNamed(AppPages.signIn, arguments: {'twitterAuth': result});
+        }
+      }
+    }
   }
 
   /// Manually test a deep link

@@ -64,7 +64,7 @@ class TwitterSdkController extends GetxController {
             'User: ${user?.id}, ${user?.name}, ${user?.screenName}, ${user?.thumbnailImage}',
           );
 
-          twitterToken = TwitterToken(token: token!, tokenSecret: tokenSecret!);
+          // twitterToken = TwitterToken(token: token!, tokenSecret: tokenSecret!);
           twitterUser =
               user != null
                   ? TwitterUser(
