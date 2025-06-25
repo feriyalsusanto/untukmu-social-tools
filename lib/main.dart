@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:loader_overlay/loader_overlay.dart';
 import 'package:untukmu_social_tools/app/controllers/applinks/applinks_controller.dart';
@@ -23,23 +24,29 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GlobalLoaderOverlay(
-      child: GetMaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: 'Untukmu SMT',
-        theme: ThemeData(
-          primarySwatch: Colors.orange,
-          scaffoldBackgroundColor: Colors.white,
-          cardColor: Colors.white,
-          cardTheme: CardThemeData(color: Colors.white, elevation: 4),
-          appBarTheme: AppBarTheme(backgroundColor: Colors.white),
-        ),
-        getPages: AppPages.pages,
-        initialBinding: BindingsBuilder(() {
-          Get.put(ClientDioController());
-          Get.put(AppStorageController());
-          Get.put(ApplinksController());
-          Get.put(TwitterSdkController());
-        }),
+      child: ScreenUtilInit(
+        designSize: const Size(360, 690),
+        minTextAdapt: true,
+        builder: (context, child) {
+          return GetMaterialApp(
+            debugShowCheckedModeBanner: false,
+            title: 'Untukmu SMT',
+            theme: ThemeData(
+              primarySwatch: Colors.orange,
+              scaffoldBackgroundColor: Colors.white,
+              cardColor: Colors.white,
+              cardTheme: CardThemeData(color: Colors.white, elevation: 4),
+              appBarTheme: AppBarTheme(backgroundColor: Colors.white),
+            ),
+            getPages: AppPages.pages,
+            initialBinding: BindingsBuilder(() {
+              Get.put(ClientDioController());
+              Get.put(AppStorageController());
+              Get.put(ApplinksController());
+              Get.put(TwitterSdkController());
+            }),
+          );
+        },
       ),
     );
   }

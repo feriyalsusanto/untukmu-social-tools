@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:untukmu_flutter_design_system/untukmu_flutter_design_system.dart';
 import 'package:untukmu_social_tools/app/controllers/twitter_sdk/twitter_sdk_controller.dart';
 import 'package:untukmu_social_tools/app/modules/home/controllers/navigation_controller.dart';
+import 'package:untukmu_social_tools/app/modules/home/views/widgets/passport_switch.dart';
 import 'package:untukmu_social_tools/app/modules/home_opportunity/views/home_opportunity_page.dart';
 import 'package:untukmu_social_tools/app/modules/home_passport/views/home_passport_page.dart';
 import 'package:untukmu_social_tools/app/modules/signin/views/widgets/widgets.dart';
@@ -64,7 +66,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                         color: Colors.black.withValues(alpha: 0.1),
                         width: 1,
                       ),
-                      borderRadius: BorderRadius.circular(20),
+                      borderRadius: BorderRadius.circular(16.r),
                     ),
                     child: Column(
                       spacing: 8,
@@ -77,12 +79,12 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                           ),
                         ),
                         Row(
-                          spacing: 16,
+                          spacing: 16.w,
                           crossAxisAlignment: CrossAxisAlignment.end,
                           children: [
                             Expanded(
                               child: Column(
-                                spacing: 8,
+                                spacing: 8.h,
                                 crossAxisAlignment: CrossAxisAlignment.stretch,
                                 children: [
                                   ClipRRect(
@@ -96,24 +98,24 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                             ),
                             Expanded(
                               child: Column(
-                                spacing: 8,
+                                spacing: 8.h,
                                 children: [
                                   Row(
-                                    spacing: 8,
+                                    spacing: 8.w,
                                     children: [
                                       CircleAvatar(
-                                        maxRadius: 18,
+                                        maxRadius: 14.r,
                                         backgroundColor:
                                             DLSColors.pacificBlueDark,
                                         foregroundColor: DLSColors.iconWhite0,
                                         child: Icon(
                                           FontAwesomeIcons.wallet,
-                                          size: 14,
+                                          size: 12.w,
                                         ),
                                       ),
                                       Expanded(
                                         child: Column(
-                                          spacing: 4,
+                                          spacing: 4.h,
                                           crossAxisAlignment:
                                               CrossAxisAlignment.stretch,
                                           children: [
@@ -134,7 +136,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                                     padding: EdgeInsets.all(DLSSizing.s2xSmall),
                                     decoration: BoxDecoration(
                                       color: Color(0xFFF1F5F8),
-                                      borderRadius: BorderRadius.circular(20),
+                                      borderRadius: BorderRadius.circular(16.r),
                                     ),
                                     child: Column(
                                       crossAxisAlignment:
@@ -148,7 +150,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                                                     .withValues(alpha: 0.5),
                                               ),
                                         ),
-                                        SizedBox(height: 4),
+                                        SizedBox(height: 4.h),
                                         RichText(
                                           text: TextSpan(
                                             text: '# ',
@@ -169,7 +171,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                                             ],
                                           ),
                                         ),
-                                        SizedBox(height: 16),
+                                        SizedBox(height: 12.h),
                                         ElevatedButton(
                                           onPressed: () {},
                                           style: ElevatedButton.styleFrom(
@@ -201,7 +203,8 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                                               Expanded(
                                                 child: Text(
                                                   'Leaderboard',
-                                                  style: DLSTextStyle.labelLarge
+                                                  style: DLSTextStyle
+                                                      .labelMedium
                                                       .copyWith(
                                                         color:
                                                             DLSColors
@@ -212,7 +215,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                                               ),
                                               Icon(
                                                 FontAwesomeIcons.chevronRight,
-                                                size: 14,
+                                                size: 10.w,
                                               ),
                                             ],
                                           ),
@@ -226,7 +229,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                           ],
                         ),
                         Container(
-                          margin: EdgeInsets.only(top: 16),
+                          margin: EdgeInsets.only(top: 12.h),
                           child: SocialMediaButton(
                             onPressed: () {},
                             label: 'Complete Your Profile',
@@ -237,79 +240,45 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                       ],
                     ),
                   ),
+                  Container(
+                    margin: EdgeInsets.only(top: 4.h),
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 16.w,
+                      vertical: 12.h,
+                    ),
+                    decoration: BoxDecoration(
+                      // color: Color(0xFFF1F5F8),
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(20.r),
+                    ),
+                    child: Column(
+                      spacing: 16.h,
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Text(
+                          'Impact Score',
+                          style: DLSTextStyle.labelLarge.copyWith(
+                            color: DLSColors.textMain900.withValues(alpha: 0.5),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
                 ],
               ),
-              // Row(
-              //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              //   children: [
-              //     Text(
-              //       'Profile Passport',
-              //       style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-              //     ),
-              //     IconButton(
-              //       onPressed: () {
-              //         _scaffoldKey.currentState?.openEndDrawer();
-              //       },
-              //       icon: Icon(FontAwesomeIcons.trophy),
-              //       iconSize: 18,
-              //       splashRadius: 10,
-              //       tooltip: 'XP & Badges',
-              //     ),
-              //   ],
-              // ),
-              // Card(
-              //   elevation: 0,
-              //   borderOnForeground: true,
-              //   color: Colors.white,
-              //   shape: RoundedRectangleBorder(
-              //     borderRadius: BorderRadius.circular(12),
-              //     side: BorderSide(color: Color(0xFFE5E7EB)),
-              //   ),
-              //   child: Padding(
-              //     padding: EdgeInsets.all(16.0),
-              //     child: ProfileInfo(),
-              //   ),
-              // ),
-              // ImpactScoreChart(),
-              // SizedBox(height: 8),
+              SizedBox(height: 16.h),
+              PassportSwitch(
+                initialValue: true,
+                // onChanged: (value) {},
+                activeText: 'My Passport',
+                inactiveText: 'Opportunities',
+                activeIcon: Assets.icons.personFilled,
+                inactiveIcon: Assets.icons.clipboardText,
+              ),
               GetBuilder<NavigationController>(
-                builder: (controller) {
-                  return Column(
-                    spacing: 16,
-                    children: [
-                      TabBar(
-                        onTap:
-                            (index) =>
-                                controller.changeIndex(activeIndex: index),
-                        controller: tabController,
-                        indicatorSize: TabBarIndicatorSize.tab,
-                        tabs: [
-                          Tab(
-                            child: Row(
-                              spacing: 8,
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Icon(FontAwesomeIcons.passport, size: 16),
-                                Text('Passport'),
-                              ],
-                            ),
-                          ),
-                          Tab(
-                            child: Row(
-                              spacing: 8,
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Icon(FontAwesomeIcons.satelliteDish, size: 16),
-                                Text('Opportunities'),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                      getCurrentPage(controller.currentIndex),
-                    ],
-                  );
-                },
+                builder:
+                    (controller) => getCurrentPage(controller.currentIndex),
               ),
             ],
           ),

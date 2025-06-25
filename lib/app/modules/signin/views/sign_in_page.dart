@@ -20,7 +20,8 @@ class _SignInPageState extends State<SignInPage> {
   @override
   void initState() {
     signInController.initialization(
-        socialMediaAuthResult: widget.socialMediaAuthResult);
+      socialMediaAuthResult: widget.socialMediaAuthResult,
+    );
     super.initState();
   }
 
@@ -76,6 +77,8 @@ class _SignInPageState extends State<SignInPage> {
               signInController.loginByX();
             } else if (type == SocialType.google) {
               signInController.loginByGoogle();
+            } else if (type == SocialType.email) {
+              signInController.switchContent(1);
             }
           },
         );

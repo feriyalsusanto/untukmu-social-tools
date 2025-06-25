@@ -186,7 +186,7 @@ packages:
     source: hosted
     version: "1.3.1"
   carousel_slider:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: carousel_slider
       sha256: bcc61735345c9ab5cb81073896579e735f81e35fd588907a393143ea986be8ff
@@ -422,6 +422,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.0.28"
+  flutter_screenutil:
+    dependency: "direct main"
+    description:
+      name: flutter_screenutil
+      sha256: "8239210dd68bee6b0577aa4a090890342d04a136ce1c81f98ee513fc0ce891de"
+      url: "https://pub.dev"
+    source: hosted
+    version: "5.9.3"
   flutter_secure_storage:
     dependency: "direct main"
     description:
@@ -544,6 +552,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "6.2.1"
+  gradient_borders:
+    dependency: "direct main"
+    description:
+      name: gradient_borders
+      sha256: b1cd969552c83f458ff755aa68e13a0327d09f06c3f42f471b423b01427f21f8
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.1"
   graphs:
     dependency: transitive
     description:
@@ -880,6 +896,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.28.0"
+  shadex:
+    dependency: "direct main"
+    description:
+      name: shadex
+      sha256: b0b674747b643aa96c6b301babe36eaedb17afb7422fdc47d55cd8bd34adb612
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.2"
   shelf:
     dependency: transitive
     description:
@@ -989,6 +1013,22 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.4.1"
+  syncfusion_flutter_core:
+    dependency: transitive
+    description:
+      name: syncfusion_flutter_core
+      sha256: bee87cdfe527b31705190162e3bd27bf468d591ae7c68182244bdfd94e21f737
+      url: "https://pub.dev"
+    source: hosted
+    version: "29.2.11"
+  syncfusion_flutter_gauges:
+    dependency: "direct main"
+    description:
+      name: syncfusion_flutter_gauges
+      sha256: "80d0d1a7dbf99272f6e181df9cd7567b6bff143bc010de0dcfde1410e6a62a20"
+      url: "https://pub.dev"
+    source: hosted
+    version: "29.2.11"
   synchronized:
     dependency: transitive
     description:
