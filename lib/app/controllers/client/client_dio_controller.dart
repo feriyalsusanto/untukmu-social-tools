@@ -2,6 +2,8 @@ import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get/get.dart' hide Response, FormData;
+import 'package:untukmu_social_tools/app/controllers/storage/app_storage_controller.dart';
+import 'package:untukmu_social_tools/app/utils/signature_generator.dart';
 
 class ClientDioController extends GetxController {
   static ClientDioController get to => Get.find();
@@ -56,16 +58,43 @@ class ClientDioController extends GetxController {
     }
   }
 
+  void setUserAccessToken({required String accessToken}) {
+    _dio.options.headers['Authorization'] = 'Bearer $accessToken';
+  }
+
   // Request interceptor
   Future<void> _onRequest(
     RequestOptions options,
     RequestInterceptorHandler handler,
   ) async {
-    // Get token from secure storage
-    // final token = _userController.token.value;
-    // if (token.isNotEmpty) {
-    //   options.headers['Authorization'] = 'Bearer $token';
-    // }
+    final storageController = AppStorageController.instance;
+    final user = await storageController.loadUserData();
+
+    if (user != null && user.userToken?.accessToken != null) {
+      options.headers['Authorization'] =
+          'Bearer ${user.userToken!.accessToken}';
+    }
+
+    var timestamp = DateTime.now().millisecondsSinceEpoch;
+
+    options.headers['x-foru-timestamp'] = timestamp;
+
+    var payloadForSignature =
+        options.data is FormData
+            ? options.path
+            : (options.data ?? options.path);
+
+    debugPrint('options.data ${options.data}');
+    debugPrint('options.path ${options.path}');
+
+    options.headers['x-foru-signature'] =
+        SignatureGenerator.generatePayloadToSignature(
+          method: options.method,
+          payload: payloadForSignature,
+          timestamp: timestamp.toString(),
+          isDev: true,
+        );
+
     handler.next(options);
   }
 
