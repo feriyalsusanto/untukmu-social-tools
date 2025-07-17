@@ -3,7 +3,9 @@ import 'dart:async';
 import 'package:app_links/app_links.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:untukmu_social_tools/app/controllers/storage/app_storage_controller.dart';
 import 'package:untukmu_social_tools/app/data/models/twitter/social_media_auth_result.dart';
+import 'package:untukmu_social_tools/app/data/models/twitter/user_token.dart';
 import 'package:untukmu_social_tools/app/routes/app_pages.dart';
 
 class ApplinksController extends GetxController {
@@ -82,16 +84,51 @@ class ApplinksController extends GetxController {
     final path = uri.path;
     final queryParams = uri.queryParameters;
 
-    debugPrint('Navigating to: $path with params: $queryParams');
+    debugPrint('Navigating to path: $path with params: $queryParams');
 
-    if (path == '/deeplink') {
-      if (queryParams.containsKey('twitterId') ||
-          queryParams.containsKey('googleId')) {
-        SocialMediaAuthResult result = SocialMediaAuthResult.fromParams(
-          queryParams,
+    debugPrint('path.contains(/deeplink) == ${path.contains('/deeplink')}');
+
+    if (path.contains('/deeplink')) {
+      debugPrint('processing deeplink');
+      String? status =
+          queryParams.containsKey('status') ? queryParams['status'] : null;
+
+      debugPrint('status: $status');
+
+      if (status == 'failed') {
+        String? message =
+            queryParams.containsKey('message') ? queryParams['message'] : null;
+        Get.snackbar(
+          'Error',
+          message ?? 'Failed to process app link',
+          snackPosition: SnackPosition.BOTTOM,
+          backgroundColor: Colors.red,
+          colorText: Colors.white,
         );
-        if (result.isSuccess) {
-          Get.offAllNamed(AppPages.signIn, arguments: {'twitterAuth': result});
+      } else {
+        final queries = path.split('/');
+        final query = queries[queries.length - 1];
+        debugPrint('query: $query');
+
+        if (queryParams.containsKey('twitterId') ||
+            queryParams.containsKey('googleId')) {
+          SocialMediaAuthResult result = SocialMediaAuthResult.fromParams(
+            queryParams,
+          );
+          if (result.isSuccess) {
+            await AppStorageController.instance.saveUserToken(
+              userToken: UserToken(
+                twitterId: result.twitterId,
+                googleId: result.googleId,
+                accessToken: result.accessToken,
+                expiresAt: result.expiresAt,
+              ),
+            );
+
+            Get.offAllNamed(AppPages.signIn, arguments: {'userToken': result});
+          }
+        } else if (query.length == 36) {
+          Get.offAllNamed(AppPages.signIn, arguments: {'emailKey': query});
         }
       }
     }
