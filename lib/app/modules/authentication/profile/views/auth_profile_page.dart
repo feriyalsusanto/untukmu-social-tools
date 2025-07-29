@@ -3,8 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:untukmu_flutter_design_system/untukmu_flutter_design_system.dart';
 import 'package:untukmu_social_tools/app/modules/authentication/profile/controllers/profile_controller.dart';
-import 'package:untukmu_social_tools/app/modules/authentication/profile/views/painters/profile_image_background_painter.dart';
-import 'package:untukmu_social_tools/app/modules/authentication/profile/views/painters/profile_info_background_painter.dart';
+import 'package:untukmu_social_tools/app/styles/custom_painters/profile_image_background_painter.dart';
+import 'package:untukmu_social_tools/app/styles/custom_painters/profile_info_background_painter.dart';
 import 'package:untukmu_social_tools/app/modules/authentication/profile/views/widgets/profile_score_item.dart';
 import 'package:untukmu_social_tools/app/styles/text/custom_text_styles.dart';
 import 'package:untukmu_social_tools/gen/assets.gen.dart';
@@ -202,7 +202,7 @@ class _AuthProfilePageState extends State<AuthProfilePage> {
                           spacing: 10.h,
                           children: [
                             Text(
-                              'Shaping Somnia’s world with skill and strategy. you build, test, and lead your crew through every mission.',
+                              'Shaping Somnia\'s world with skill and strategy. you build, test, and lead your crew through every mission.',
                               style: CustomTextStyles.neueMontrealMedium10
                                   .copyWith(color: Colors.white),
                             ),

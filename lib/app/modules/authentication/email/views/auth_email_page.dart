@@ -102,6 +102,7 @@ class _AuthEmailPageState extends State<AuthEmailPage> {
                 () => _emailController.continueWithEmail(
                   email: emailController.text,
                   name: nameController.text,
+                  test: true,
                 ),
           ),
         ],

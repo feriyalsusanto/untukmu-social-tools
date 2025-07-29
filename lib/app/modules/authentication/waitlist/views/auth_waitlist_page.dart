@@ -123,13 +123,12 @@ class _AuthWaitlistPageState extends State<AuthWaitlistPage> {
       SocialMediaButton(
         label: 'Explore Our Community',
         onPressed: () {},
-        backgroundColor: DLSColors.bgSurface700,
-        foregroundColor: DLSColors.bgWhite0,
+        backgroundColor: DLSColors.bgWhite0,
+        foregroundColor: DLSColors.textMain900,
         iconBackgroundColor: DLSColors.bgStrong900,
         darkMode: true,
-        buttonRadius: ButtonRadius.full,
       ),
-      SizedBox(height: 30.h),
+      SizedBox(height: 16.h),
       SocialMediaButton(
         label: 'I Have The Code',
         onPressed: () {},
@@ -138,7 +137,6 @@ class _AuthWaitlistPageState extends State<AuthWaitlistPage> {
         iconBackgroundColor: DLSColors.bgStrong900,
         darkMode: true,
         buttonType: ButtonType.outline,
-        buttonRadius: ButtonRadius.full,
       ),
       Container(
         margin: EdgeInsets.symmetric(vertical: 24.h),
@@ -158,33 +156,33 @@ class _AuthWaitlistPageState extends State<AuthWaitlistPage> {
           textAlign: TextAlign.center,
         ),
       ),
-      Text(
-        'Don\'t Miss out on our Updates',
-        style: DLSTextStyle.labelMedium.copyWith(color: Colors.white),
-        textAlign: TextAlign.center,
-      ),
-      SizedBox(height: 12.h),
-      Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        spacing: 24.w,
-        children: [
-          CircleAvatar(
-            radius: 22.r,
-            backgroundColor: DLSColors.bgSurface700,
-            child: Assets.icons.iconLogoDiscord.svg(width: 30.w),
-          ),
-          CircleAvatar(
-            radius: 22.r,
-            backgroundColor: DLSColors.bgSurface700,
-            child: Assets.icons.iconLogoX.svg(width: 20.w),
-          ),
-          CircleAvatar(
-            radius: 22.r,
-            backgroundColor: DLSColors.bgSurface700,
-            child: Assets.icons.iconLogoTelegram.svg(width: 30.w),
-          ),
-        ],
-      ),
+      // Text(
+      //   'Don\'t Miss out on our Updates',
+      //   style: DLSTextStyle.labelMedium.copyWith(color: Colors.white),
+      //   textAlign: TextAlign.center,
+      // ),
+      // SizedBox(height: 12.h),
+      // Row(
+      //   mainAxisAlignment: MainAxisAlignment.center,
+      //   spacing: 24.w,
+      //   children: [
+      //     CircleAvatar(
+      //       radius: 22.r,
+      //       backgroundColor: DLSColors.bgSurface700,
+      //       child: Assets.icons.iconLogoDiscord.svg(width: 30.w),
+      //     ),
+      //     CircleAvatar(
+      //       radius: 22.r,
+      //       backgroundColor: DLSColors.bgSurface700,
+      //       child: Assets.icons.iconLogoX.svg(width: 20.w),
+      //     ),
+      //     CircleAvatar(
+      //       radius: 22.r,
+      //       backgroundColor: DLSColors.bgSurface700,
+      //       child: Assets.icons.iconLogoTelegram.svg(width: 30.w),
+      //     ),
+      //   ],
+      // ),
       SizedBox(height: 32.h),
     ];
   }

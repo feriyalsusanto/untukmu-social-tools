@@ -1,6 +1,6 @@
 name: untukmu_social_tools
 description: "A new Flutter project."
-publish_to: 'none'
+publish_to: "none"
 version: 0.1.0
 
 environment:
@@ -9,14 +9,17 @@ environment:
 dependencies:
   animations: ^2.0.11
   app_links: ^6.4.0
+  blur: ^4.0.2
   carousel_slider: ^5.1.1
   crypto: ^3.0.6
+  data_table_2: ^2.6.0
   dio: ^5.8.0+1
   dotted_border: ^3.0.1
   fl_chart: ^1.0.0
   flutter:
     sdk: flutter
   flutter_dotenv: ^5.2.1
+  flutter_inset_shadow: ^2.0.3
   flutter_screenutil: ^5.9.3
   flutter_secure_storage: ^9.2.4
   flutter_spinkit: ^5.2.1
@@ -24,10 +27,13 @@ dependencies:
   flutter_svg: ^2.2.0
   font_awesome_flutter: ^10.8.0
   get: ^4.7.2
+  google_fonts: ^6.2.1
   gradient_borders: ^1.0.1
+  gradient_elevated_button: ^1.1.0
   http: ^1.4.0
   intl: ^0.20.2
   loader_overlay: ^5.0.0
+  mesh_gradient: ^1.3.8
   shadex: ^1.0.2
   syncfusion_flutter_gauges: ^29.2.11
   untukmu_flutter_design_system:
@@ -42,7 +48,6 @@ dev_dependencies:
   flutter_lints: ^6.0.0
   build_runner:
   flutter_gen_runner:
-  
 
 flutter:
   uses-material-design: true
@@ -50,6 +55,93 @@ flutter:
     - .env
     - assets/images/
     - assets/icons/
+    - assets/fonts/
+  fonts:
+    - family: NeueMontreal
+      fonts:
+        - asset: assets/fonts/NeueMontreal-Regular.otf
+        - asset: assets/fonts/NeueMontreal-Bold.otf
+          weight: 700
+        - asset: assets/fonts/NeueMontreal-BoldItalic.otf
+          weight: 700
+          style: italic
+        - asset: assets/fonts/NeueMontreal-Italic.otf
+          style: italic
+        - asset: assets/fonts/NeueMontreal-Light.otf
+          weight: 300
+        - asset: assets/fonts/NeueMontreal-LightItalic.otf
+          weight: 300
+          style: italic
+        - asset: assets/fonts/NeueMontreal-Medium.otf
+          weight: 500
+        - asset: assets/fonts/NeueMontreal-MediumItalic.otf
+          weight: 500
+          style: italic
+    - family: GeistMono
+      fonts:
+        - asset: assets/fonts/GeistMono-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/GeistMono-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/GeistMono-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/GeistMono-Light.ttf
+          weight: 300
+        - asset: assets/fonts/GeistMono-Thin.ttf
+          weight: 100
+        - asset: assets/fonts/GeistMono-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/GeistMono-ExtraBold.ttf
+          weight: 800
+        - asset: assets/fonts/GeistMono-ExtraLight.ttf
+          weight: 200
+    - family: Lufga
+      fonts:
+        - asset: assets/fonts/LufgaThin.ttf
+          weight: 100
+        - asset: assets/fonts/LufgaThinItalic.ttf
+          weight: 100
+          style: italic
+        - asset: assets/fonts/LufgaExtraLight.ttf
+          weight: 200
+        - asset: assets/fonts/LufgaExtraLightItalic.ttf
+          weight: 200
+          style: italic
+        - asset: assets/fonts/LufgaLight.ttf
+          weight: 300
+        - asset: assets/fonts/LufgaLightItalic.ttf
+          weight: 300
+          style: italic
+        - asset: assets/fonts/LufgaRegular.ttf
+          weight: 400
+        - asset: assets/fonts/LufgaItalic.ttf
+          weight: 400
+          style: italic
+        - asset: assets/fonts/LufgaMedium.ttf
+          weight: 500
+        - asset: assets/fonts/LufgaMediumItalic.ttf
+          weight: 500
+          style: italic
+        - asset: assets/fonts/LufgaSemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/LufgaSemiBoldItalic.ttf
+          weight: 600
+          style: italic
+        - asset: assets/fonts/LufgaBold.ttf
+          weight: 700
+        - asset: assets/fonts/LufgaBoldItalic.ttf
+          weight: 700
+          style: italic
+        - asset: assets/fonts/LufgaExtraBold.ttf
+          weight: 800
+        - asset: assets/fonts/LufgaExtraBoldItalic.ttf
+          weight: 800
+          style: italic
+        - asset: assets/fonts/LufgaBlack.ttf
+          weight: 900
+        - asset: assets/fonts/LufgaBlackItalic.ttf
+          weight: 900
+          style: italic
 
 flutter_gen:
   integrations:

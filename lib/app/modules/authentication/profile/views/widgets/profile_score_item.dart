@@ -5,16 +5,23 @@ import 'package:untukmu_social_tools/app/styles/text/custom_text_styles.dart';
 import 'package:untukmu_social_tools/gen/assets.gen.dart';
 
 class ProfileScoreItem extends StatelessWidget {
-  const ProfileScoreItem({super.key, required this.label});
+  const ProfileScoreItem({
+    super.key,
+    required this.label,
+    this.backgroundColor,
+    this.foregroundColor,
+  });
 
   final String label;
+  final Color? backgroundColor;
+  final Color? foregroundColor;
 
   @override
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.fromLTRB(8.w, 2.h, 2.w, 2.h),
       decoration: BoxDecoration(
-        color: Color(0xFF16131F),
+        color: backgroundColor ?? Color(0xFF16131F),
         borderRadius: DLSRadius.radiusFull,
       ),
       child: Row(
@@ -23,7 +30,7 @@ class ProfileScoreItem extends StatelessWidget {
           Text(
             label,
             style: CustomTextStyles.neueMontrealRegular10.copyWith(
-              color: Colors.white.withValues(alpha: 0.5),
+              color: foregroundColor ?? Colors.white.withValues(alpha: 0.5),
             ),
           ),
           Assets.icons.iconInfoCircle.svg(

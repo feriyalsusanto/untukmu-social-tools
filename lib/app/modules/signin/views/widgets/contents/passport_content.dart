@@ -15,7 +15,7 @@ class PassportContent extends StatelessWidget {
     return SignInContent(
       topContent: Column(
         children: [
-          Text('Create Your Profile Passport', style: DLSTextStyle.titleH4),
+          Text('Access Your Profile Passport', style: DLSTextStyle.titleH4),
           SizedBox(height: 8),
           Text(
             'Track your influence, unlock badges, and get matched with real opportunities.',
@@ -57,12 +57,12 @@ class PassportContent extends StatelessWidget {
             ),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(DLSSizing.radius16),
-              color: Colors.black.withValues(alpha: 0.1),
+              color: DLSColors.bgWeak100,
             ),
             child: Text(
               'Each method creates a lightweight Passport shell with a uid, and allows you to explore a demo version immediately.',
               style: DLSTextStyle.paragraphSmall.copyWith(
-                color: DLSColors.textDisabled300,
+                color: DLSColors.textSoft400,
               ),
               textAlign: TextAlign.center,
             ),
@@ -75,7 +75,7 @@ class PassportContent extends StatelessWidget {
                 Text(
                   'By continuing, you agree to our',
                   style: DLSTextStyle.paragraphSmall.copyWith(
-                    color: DLSColors.textDisabled300,
+                    color: DLSColors.textSub500,
                   ),
                   textAlign: TextAlign.center,
                 ),
@@ -83,13 +83,13 @@ class PassportContent extends StatelessWidget {
                   textAlign: TextAlign.center,
                   text: TextSpan(
                     style: DLSTextStyle.paragraphSmall.copyWith(
-                      color: DLSColors.textDisabled300,
+                      color: DLSColors.textSub500,
                     ),
                     children: [
                       TextSpan(
                         text: 'Terms of Service',
                         style: DLSTextStyle.paragraphSmall.copyWith(
-                          color: DLSColors.bgWhite0,
+                          color: DLSColors.textSoft400,
                           decoration: TextDecoration.underline,
                         ),
                       ),
@@ -97,7 +97,7 @@ class PassportContent extends StatelessWidget {
                       TextSpan(
                         text: 'Privacy Policy',
                         style: DLSTextStyle.paragraphSmall.copyWith(
-                          color: DLSColors.bgWhite0,
+                          color: DLSColors.textSoft400,
                           decoration: TextDecoration.underline,
                         ),
                       ),

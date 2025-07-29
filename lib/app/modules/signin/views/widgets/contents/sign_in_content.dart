@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:untukmu_flutter_design_system/untukmu_flutter_design_system.dart';
-import 'package:untukmu_social_tools/app/modules/signin/views/widgets/widgets.dart';
 
 class SignInContent extends StatelessWidget {
   const SignInContent({
@@ -14,9 +13,13 @@ class SignInContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GlassmorphismCard(
+    return Container(
       margin: EdgeInsets.all(DLSSizing.xSmall),
-      padding: EdgeInsets.all(DLSSizing.s2xSmall),
+      padding: EdgeInsets.all(DLSSizing.s3xSmall),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(DLSSizing.radius32),
+      ),
       child: Column(
         spacing: 8,
         mainAxisSize: MainAxisSize.min,
@@ -26,24 +29,14 @@ class SignInContent extends StatelessWidget {
           // Top content
           Container(
             padding: EdgeInsets.all(DLSSizing.medium),
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(DLSSizing.radius32),
-            ),
             child: topContent,
           ),
           if (bottomContent != null)
             // Bottom content
             Container(
-              padding: EdgeInsets.all(DLSSizing.s2xSmall),
-              decoration: BoxDecoration(
-                color: Colors.white.withValues(alpha: 0.1),
-                borderRadius: BorderRadius.circular(DLSSizing.radius32),
-                border: Border.all(
-                  color: Colors.white.withValues(alpha: 0.25),
-                  width: 1,
-                ),
-                boxShadow: [DLSShadow.xLargeShadow],
+              padding: EdgeInsets.only(
+                left: DLSSizing.s2xSmall,
+                right: DLSSizing.s2xSmall,
               ),
               child: bottomContent,
             ),

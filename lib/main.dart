@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 import 'package:loader_overlay/loader_overlay.dart';
 import 'package:untukmu_social_tools/app/controllers/applinks/applinks_controller.dart';
 import 'package:untukmu_social_tools/app/controllers/client/client_dio_controller.dart';
-import 'package:untukmu_social_tools/app/controllers/twitter_sdk/twitter_sdk_controller.dart';
+import 'package:untukmu_social_tools/app/controllers/user/user_controller.dart';
 import 'package:untukmu_social_tools/app/core/tiktok_sdk/tiktok_sdk_v2.dart';
 import 'package:untukmu_social_tools/app/controllers/storage/app_storage_controller.dart';
 import 'package:untukmu_social_tools/app/routes/app_pages.dart';
@@ -24,8 +24,9 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GlobalLoaderOverlay(
+      overlayColor: Colors.black.withValues(alpha: 0.5),
       child: ScreenUtilInit(
-        designSize: const Size(360, 690),
+        designSize: const Size(393, 835),
         minTextAdapt: true,
         builder: (context, child) {
           return GetMaterialApp(
@@ -43,7 +44,7 @@ class MainApp extends StatelessWidget {
               Get.put(ClientDioController());
               Get.put(AppStorageController());
               Get.put(ApplinksController());
-              Get.put(TwitterSdkController());
+              Get.put(UserController());
             }),
           );
         },

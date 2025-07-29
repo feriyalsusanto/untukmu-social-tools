@@ -2,13 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:untukmu_social_tools/app/data/models/twitter/social_media_auth_result.dart';
 import 'package:untukmu_social_tools/app/modules/signin/controllers/sign_in_controller.dart';
+import 'package:untukmu_social_tools/app/modules/signin/views/widgets/contents/email/input_email_content.dart';
 import 'package:untukmu_social_tools/app/modules/signin/views/widgets/widgets.dart';
 import 'package:untukmu_social_tools/gen/assets.gen.dart';
 
 class SignInPage extends StatefulWidget {
-  const SignInPage({super.key, this.socialMediaAuthResult});
+  const SignInPage({super.key, this.socialMediaAuthResult, this.emailKey});
 
   final SocialMediaAuthResult? socialMediaAuthResult;
+  final String? emailKey;
 
   @override
   State<SignInPage> createState() => _SignInPageState();
@@ -21,6 +23,7 @@ class _SignInPageState extends State<SignInPage> {
   void initState() {
     signInController.initialization(
       socialMediaAuthResult: widget.socialMediaAuthResult,
+      emailKey: widget.emailKey,
     );
     super.initState();
   }
@@ -83,24 +86,28 @@ class _SignInPageState extends State<SignInPage> {
           },
         );
       case 1:
-        return CheckEmailContent(
-          onBackTap: () {
-            signInController.switchContent(2);
-          },
-        );
+        return InputEmailContent();
       case 2:
-        return TwitterConnectContent(
-          onSkipPressed: () {
+        return CheckEmailContent(
+          emailKey: widget.emailKey,
+          onBackTap: () {
             signInController.switchContent(3);
           },
         );
       case 3:
-        return WalletConnectContent(
+        return TwitterConnectContent(
+          socialMediaAuthResult: widget.socialMediaAuthResult,
           onSkipPressed: () {
             signInController.switchContent(4);
           },
         );
       case 4:
+        return WalletConnectContent(
+          onSkipPressed: () {
+            signInController.switchContent(5);
+          },
+        );
+      case 5:
         return SummaryContent();
       default:
         return const SizedBox();

@@ -1,11 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:untukmu_flutter_design_system/untukmu_flutter_design_system.dart';
+import 'package:untukmu_social_tools/app/data/models/twitter/social_media_auth_result.dart';
+import 'package:untukmu_social_tools/app/modules/signin/controllers/sign_in_controller.dart';
 import 'package:untukmu_social_tools/app/modules/signin/views/widgets/widgets.dart';
 import 'package:untukmu_social_tools/gen/assets.gen.dart';
 
 class TwitterConnectContent extends StatelessWidget {
-  TwitterConnectContent({super.key, required this.onSkipPressed});
+  TwitterConnectContent({
+    super.key,
+    required this.onSkipPressed,
+    this.socialMediaAuthResult,
+  });
 
+  final SignInController signInController = Get.find<SignInController>();
+
+  final SocialMediaAuthResult? socialMediaAuthResult;
   final Function() onSkipPressed;
 
   final TextEditingController referralController = TextEditingController();
@@ -75,7 +85,9 @@ class TwitterConnectContent extends StatelessWidget {
                 textAlign: TextAlign.center,
               ),
               SocialMediaButton(
-                onPressed: () {},
+                onPressed: () {
+                  signInController.connectTwitter();
+                },
                 darkMode: true,
                 assetName: Assets.icons.xTwitter.keyName,
                 label: 'Continue with X',
